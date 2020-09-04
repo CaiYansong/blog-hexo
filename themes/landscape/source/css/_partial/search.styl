@@ -1,0 +1,62 @@
+.local-search-result
+  position: absolute
+  z-index: 99
+  width: 240px
+  top: 30px
+  right: 0
+.local-search-empty
+  color: #888
+  line-height: 1.6em
+  text-align: center
+  display: block
+  font-size: 16px
+  font-weight: normal
+  background: #fff
+  padding: 5px 8px
+  border-radius: 3px
+
+.search-result-list
+  width: 100%
+  max-height: 450px
+  min-height: 0
+  height: auto
+  overflow-y: auto
+  border: 1px solid color-border
+  padding: 10px
+  background: #FFF
+  box-sizing: border-box
+  border-radius: 3px
+
+  // 滚动条样式
+  &::-webkit-scrollbar
+    width: 5px
+    height: 5px
+  /*滑块*/
+  &::-webkit-scrollbar-thumb
+    background-color: #666
+  &::-webkit-scrollbar-thumb:hover
+    background-color: #999
+  /*滑道*/
+  &::-webkit-scrollbar-track
+    background-color: #ccc
+
+  .search-result-item
+    text-align: left
+    border-bottom: 1px solid color-border
+    padding: 10px 0
+    font-weight: normal
+    &:last-child
+      border-bottom: none
+      margin-bottom: 0
+  .search-wd
+    color: #e58c7c
+  .search-result-title
+    line-height: 1.4em
+    font-size: 16px
+    color: color-default
+    display block
+    ell()
+  .search-result-content
+    margin-top: 10px
+    font-size: 14px
+    overflow: hidden

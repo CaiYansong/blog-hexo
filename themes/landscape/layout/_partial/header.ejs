@@ -1,0 +1,45 @@
+<header id="header-wrap">
+  <div id="header">
+    <!-- <div class="brand-logo">
+      <a href="<%- url_for() %>" class="waves-effect waves-light">
+        <% if (theme.logo !== undefined && theme.logo.length > 0) { %>
+        <img src="<%= theme.logo %>" class="logo-img" alt="LOGO">
+        <% } %>
+        <span class="logo-span"><%- config.title %></span>
+      </a>
+    </div> -->
+
+    <nav id="main-nav">
+      <a id="main-nav-toggle" class="nav-icon"></a>
+      <% for (var i in theme.menu){ %>
+      <a class="main-nav-link" href="<%- url_for(theme.menu[i]) %>"><%= i %></a>
+      <% } %>
+    </nav>
+
+    <div id="search-wrap" class="search-wrap">
+      <div id="search-form-wrap" class="search-form-wrap">
+        <form class="search-form">
+          <input type="search" name="q" class="search-form-input" id="js_site_search_input" placeholder="Search"
+            autocomplete="off">
+          <dvi id="nav-search-btn" class="nav-icon" title="<%= __('search') %>"></dvi>
+          <!-- <button type="submit" class="search-form-submit">&#xF002;</button> -->
+        </form>
+        <div id="js_site_search_result" class="local-search-result">
+        </div>
+      </div>
+    </div>
+
+    <!-- 自带的 google搜索 -->
+    <!-- <div id="search-form-wrap">
+        <%- search_form({button: '&#xF002;'}) %>
+      </div> -->
+
+    <!-- 百度搜索 -->
+    <!-- <div id="search-form-wrap">
+        <form action="http://www.baidu.com/s?cl=3&" method="get" accept-charset="UTF-8" class="search-form">
+          <input type="search" name="wd" class="search-form-input" placeholder="Search" />
+          <button type="submit" class="search-form-submit">&#xF002;</button>
+          <input type="hidden" name="si" value="https://yansongcai.github.io" />
+        </form>
+      </div> -->
+</header>

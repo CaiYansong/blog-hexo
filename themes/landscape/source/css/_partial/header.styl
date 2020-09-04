@@ -1,0 +1,111 @@
+#header-wrap
+  background-color: #262a30
+  border-bottom: 1px solid color-border
+
+#header
+  display: flex
+  justify-content: space-between
+  align-items: center
+  max-width: 1200px
+  height: banner-height
+  margin: 0 auto
+  position: relative
+
+#header-inner
+  position: relative
+
+#header-title
+  text-align: center
+  height: logo-size
+  position: absolute
+  top: 50%
+  left: 0
+  margin-top: logo-size * -0.5
+
+.brand-logo
+  display: inline-block
+
+.logo-img
+  width: 24px
+  height: 24px
+
+#subtitle
+  text-decoration: none
+  color: #fff
+  font-weight: 300
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.3)
+  font-size: subtitle-size
+  line-height: subtitle-size
+  letter-spacing: 1px
+
+#subtitle-wrap
+  margin-top: subtitle-size
+
+$nav-link
+  color: #fff
+  text-decoration: none
+  text-shadow: 0 1px rgba(0, 0, 0, 0.2)
+  transition: opacity 0.2s
+  display: inline-block
+  padding: 15px 15px
+  font-size: 16px
+  font-weight: 700
+  &:hover
+    opacity: 1
+
+.nav-icon
+  @extend $nav-link
+  font-family: font-icon
+  text-align: center
+  font-size: font-size
+  width: font-size
+  height: font-size
+  padding: 20px 15px
+  position: relative
+  cursor: pointer
+
+.main-nav-link
+  @extend $nav-link
+  letter-spacing: 1px
+  @media mq-mobile
+    display: none
+
+#main-nav-toggle
+  display: none
+  &:before
+    content: "\f0c9"
+  @media mq-mobile
+    display: block
+
+#nav-search-btn
+  padding: 0
+  cursor: auto
+  &:before
+    content: "\f002"
+
+#search-wrap
+  margin: 0 10px
+  position: relative
+
+#search-form-wrap
+  @media mq-mobile
+    width: 100%
+    right: -100%
+
+.search-form
+  display: flex
+  background: #fff
+  padding: 5px 15px
+  border-radius: 15px
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3)
+
+.search-form-input
+  border: none
+  background: none
+  color: color-default
+  width: 100%
+  font: 13px font-sans
+  outline: none
+  &::-webkit-search-results-decoration
+  &::-webkit-search-cancel-button
+    -webkit-appearance: none
