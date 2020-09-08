@@ -2,6 +2,17 @@
   // Search
   initSearchInput();
 
+  // 根据url的参数进行锚点定位
+  const { hash } = window.location;
+  if (hash) {
+    var a = document.querySelector(`[href='${hash}']`);
+    // 猜测是滚动出现冲突导致刚加载无法正常滚动
+    // 使用定时器之后正常滚动
+    setTimeout(() => {
+      a && a.click();
+    }, 100)
+  }
+
   // Share
   $('body').on('click', function(){
     $('.article-share-box.on').removeClass('on');
