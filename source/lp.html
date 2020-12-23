@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LP</title>
+
+  <style>
+    ul {
+      margin: 0;
+    }
+
+    li {
+      margin-bottom: 10px;
+    }
+
+    .title {
+      font-size: 20px;
+      font-weight: 700;
+    }
+
+    .acquaintance-wrap,
+    .agree-wrap,
+    .dating-wrap {
+      margin: 20px;
+    }
+
+    .acquaintance-wrap {}
+
+    .agree-wrap {}
+
+    .dating-wrap {}
+
+    .dating-address {
+      font-weight: 700;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="acquaintance-wrap">
+    <div class="acquaintance-title title">相识</div>
+    <div id="acquaintance-time" class="acquaintance-time">0天0时0分0秒</div>
+  </div>
+  <div class="agree-wrap">
+    <div class="agree-title title">❤️</div>
+    <div id="agree-time" class="agree-time">0天0时0分0秒</div>
+  </div>
+  <div class="dating-wrap">
+    <div class="dating-title title">相约</div>
+    <ul id="dating-list" class="dating-list">
+    </ul>
+  </div>
+</body>
+
+<script>
+  var ACQUAINTANCE_DATE = '2012-9-03 08:00:00';
+  var AGREE_DATE = '2020-09-14 01:00:00';
+  var datingList = [
+    {
+      address: '杭州',
+      time: '2020-12-06 07:10:00',
+    },
+    {
+      address: '厦门',
+      time: '2020-11-06 14:00:00',
+    },
+    {
+      address: '厦门',
+      time: '2020-10-03 08:20:00',
+    },
+  ];
+</script>
+
+<script>
+  var acquaintanceTimeEle = document.getElementById('acquaintance-time');
+  var agreeTimeEle = document.getElementById('agree-time');
+  var datingListEle = document.getElementById('dating-list');
+
+  var datingItemTpl = '<li class="dating-item"><div class="dating-address">{datingAddress}</div><div class="dating-time">{datingTime}</div><div class="left-time">{leftTime}</div></li>';
+
+  /**
+   * 根据字符串获取时间戳
+   * 2020-01-01 00:00:00
+   */
+  function getTimeFromStr(str) {
+    return new Date(str).getTime();
+  }
+
+  /**
+   * 获取展示的时间
+   */
+  function getShowDate(target) {
+    var days = 0;
+    var hours = 0;
+    var minutes = 0;
+    var seconds = 0;
+
+    var leftTime = Date.now() - (typeof target === 'number' ? target : getTimeFromStr(target));
+    // day
+    var dayTime = 24 * 60 * 60 * 1000;
+    if (leftTime > dayTime) {
+      days = parseInt(leftTime / dayTime, 10);
+      leftTime = leftTime % dayTime;
+    }
+    // hour
+    var hourTime = 60 * 60 * 1000;
+    if (leftTime > hourTime) {
+      hours = parseInt(leftTime / hourTime, 10);
+      leftTime = leftTime % hourTime;
+    }
+    // minute
+    var minuteTime = 60 * 1000;
+    if (leftTime > minuteTime) {
+      minutes = parseInt(leftTime / minuteTime, 10);
+      leftTime = leftTime % minuteTime;
+    }
+    // second
+    var secondTime = 1000;
+    if (leftTime > secondTime) {
+      seconds = parseInt(leftTime / secondTime, 10);
+      leftTime = leftTime % secondTime;
+    }
+
+    return days + '天' + hours + '时' + minutes + '分' + seconds + '秒';
+  }
+
+  /**
+   * 设置列表
+   */
+  function setDatingList() {
+    var listHtml = '';
+    var len = datingList.length;
+    for (var i = 0; i < len; i++) {
+      var item = datingList[i];
+      var itemText = datingItemTpl;
+      itemText = itemText.replace('{datingTime}', (item.time));
+      itemText = itemText.replace('{leftTime}', getShowDate(item.time));
+      itemText = itemText.replace('{datingAddress}', item.address);
+      listHtml += itemText;
+    }
+    datingListEle.innerHTML = listHtml;
+  }
+
+  /**
+   * 把时间展示到页面上
+   */
+  function showTime() {
+    var timer = setInterval(function () {
+      acquaintanceTimeEle.innerHTML = getShowDate(ACQUAINTANCE_DATE);
+      agreeTimeEle.innerHTML = getShowDate(AGREE_DATE);
+      setDatingList();
+    }, 1000)
+  }
+</script>
+
+
+<script>
+  showTime();
+</script>
+
+</html>
