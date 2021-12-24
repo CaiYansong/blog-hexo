@@ -1,1 +1,1 @@
-# my home 1.0
+# Blog by Hexo
